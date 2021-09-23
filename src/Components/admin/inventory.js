@@ -134,7 +134,6 @@ const Inventory = () => {
                 <p>Utlåner</p>
                 </div>
             <div className="list">
-
                 {list}
             </div>
         </div>
