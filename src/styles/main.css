@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.app {
+  height: 100vh;
+  background: #2B302E;
+  color: #fff;
+}
+
+.blue {
+  color: #3DC4FF;
+}
+/*# sourceMappingURL=main.css.map */
