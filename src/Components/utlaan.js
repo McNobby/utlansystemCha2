@@ -35,7 +35,7 @@ export default function Utlaan() {
             getType: 'laanut',
             _id: e
         }
-        axios.post('http://127.0.0.1:6969/api', req)
+        axios.post('http://172.31.100.69:6969/api', req)
         .then(res =>{
             console.log(res);
             //checks if scanned object was found and is not loaned out

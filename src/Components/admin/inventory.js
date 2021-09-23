@@ -20,7 +20,7 @@ const Inventory = () => {
             getType:'allUtstyr'
         }
 
-        axios.post('http://localhost:6969/api', req)
+        axios.post('http://172.31.100.69:6969/api', req)
         .then(res =>{
             console.log(res.data);
             setAllUtstyr(res.data)

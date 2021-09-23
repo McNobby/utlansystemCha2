@@ -43,7 +43,7 @@ const UtstyrReg = () => {
         }
 
         if(bCode && id && info){
-            axios.post('http://localhost:6969/api', utstyr)
+            axios.post('http://172.31.100.69:6969/api', utstyr)
             .then((res)=>{
                 if(res.data === 'sendt to db'){
                     //sucsess
