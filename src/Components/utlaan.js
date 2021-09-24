@@ -50,7 +50,8 @@ export default function Utlaan() {
                 id: scanned.length,
                 name: data.item,
                 bCode: data.barcode,
-                info: data.info
+                info: data.info,
+                plassering: data.plassering
             }]
             setScanned(newScanned)
             
@@ -71,7 +72,13 @@ export default function Utlaan() {
 
     const scannedList = scanned.map(i =>{
         return(
-            <li key={i.id}>{i.name}, {i.info} <span>{i.bCode}</span></li>
+            <div className="listItem" key={i.id}>
+            <p>{i.name}</p>
+            <p>{i.info}</p>
+            <p> {i.bCode} </p>
+            <p> {i.plassering} </p>
+            
+        </div>
         )
     })
 
