@@ -9,6 +9,9 @@ const UtstyrReg = () => {
 
     const [sucsess, setSucsess] = useState(false)
 
+    const clear = (e) =>{
+        e.target.value = ""
+    }
 
     const login = useLogin()
 
@@ -70,7 +73,7 @@ const UtstyrReg = () => {
         <div className="card">
             {sucsess ? <Sucsess type="Registrert!"/> : ""}
 
-            <input onClick={clearField} onKeyUp={handleBcode} type="text" id="bCodeInput" placeholder="barcode"/>
+            <input onClick={clearField} onKeyUp={handleBcode} onFocus={clear} type="text" id="bCodeInput" placeholder="barcode"/>
             <input onClick={clearField} onKeyUp={handleID} type="text" placeholder="ID (f.eks: K10)" />
             <input onClick={clearField} onKeyUp={handleInfo} type="text" placeholder="tilbehør/innhold (batteri, xlr kabel...)"/>
 
