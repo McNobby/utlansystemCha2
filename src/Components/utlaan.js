@@ -3,6 +3,7 @@ import Sucsess from "./Sucsess"
 import axios from "axios"
 import sendToBackend from "../lib/sendToBackend"
 import { useLogin } from "../loginContext"
+import {apiAdress} from './config.json'
 
 export default function Utlaan() {
     const loginState = useLogin()
@@ -35,7 +36,7 @@ export default function Utlaan() {
             getType: 'laanut',
             _id: e
         }
-        axios.post('http://172.31.100.69:6969/api', req)
+        axios.post(apiAdress, req)
         .then(res =>{
             console.log(res);
             //checks if scanned object was found and is not loaned out

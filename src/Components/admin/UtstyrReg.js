@@ -2,6 +2,8 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import { useLogin } from '../../loginContext'
 import Sucsess from '../Sucsess'
+import {apiAdress} from '../config.json'
+
 
 const UtstyrReg = () => {
 
@@ -43,7 +45,7 @@ const UtstyrReg = () => {
         }
 
         if(bCode && id && info){
-            axios.post('http://172.31.100.69:6969/api', utstyr)
+            axios.post(apiAdress, utstyr)
             .then((res)=>{
                 if(res.data === 'sendt to db'){
                     //sucsess

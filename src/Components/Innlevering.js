@@ -1,6 +1,8 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import Sucsess from './Sucsess'
+import {apiAdress} from './config.json'
+
 
 const Innlevering = () => {
 
@@ -18,7 +20,7 @@ const Innlevering = () => {
                 _id: e.target.value
             }
             //get scanned item in utlånt db
-            axios.post('http://172.31.100.69:6969/api', req)
+            axios.post(apiAdress, req)
             .then(res =>{
                 
 
@@ -35,7 +37,7 @@ const Innlevering = () => {
                     userID: data.user
                 }
 
-                axios.post('http://172.31.100.69:6969/api', req)
+                axios.post(apiAdress, req)
                 .then(res2 =>{
                     const user = res2.data
                     
@@ -49,7 +51,7 @@ const Innlevering = () => {
                         userID: data.user
                     }
                     
-                    axios.post('http://172.31.100.69:6969/api', req)
+                    axios.post(apiAdress, req)
                     setSucsess(true)
                     setTimeout(()=>{
                         setSucsess(false)

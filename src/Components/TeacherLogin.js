@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { useUpdateLogin } from '../loginContext'
 import axios from 'axios'
+import {apiAdress} from './config.json'
+
 
 const TeacherLogin = () => {
 
@@ -22,7 +24,7 @@ const TeacherLogin = () => {
             getType: 'user',
             userID: input
         }
-        axios.post('http://172.31.100.69:6969/api', req)
+        axios.post(apiAdress, req)
         .then((res)=>{
             const user = res.data
             console.log(res, user);

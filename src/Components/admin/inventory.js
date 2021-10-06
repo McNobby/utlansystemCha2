@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
+import {apiAdress} from '../config.json'
 
 const Inventory = () => {
 
@@ -20,7 +21,7 @@ const Inventory = () => {
             getType:'allUtstyr'
         }
 
-        axios.post('http://172.31.100.69:6969/api', req)
+        axios.post(apiAdress, req)
         .then(res =>{
             console.log(res.data);
             setAllUtstyr(res.data)
