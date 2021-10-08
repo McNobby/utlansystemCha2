@@ -39,7 +39,7 @@ const NewTeacher = () => {
         <div className="narrow-card">
             <h1>Lærer registrering</h1>
             <input onKeyUp={elevIDSave} autoFocus type="text" placeholder="Scan ditt kort her" />
-            <input onKeyUp={navnSave} type="text" placeholder="Fornavn" />
+            <input onKeyUp={navnSave} type="text" placeholder="Fult navn" />
             <input onKeyUp={emailSave} type="text" placeholder="E-post" />
             <button onClick={handleSubmit} className="submit-btn">Registrer</button>
         </div>
