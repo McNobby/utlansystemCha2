@@ -7,6 +7,6 @@ const registrationSchema = new Schema({
     item: String,
     plassering: String,
     info: String,
-    utlant: {status: Boolean, utlaner: String}
+    utlant: {status: Boolean, utlaner: Object}
 })
 module.exports = mongoose.model('registrationSchema', registrationSchema)

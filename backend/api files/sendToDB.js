@@ -57,15 +57,15 @@ module.exports = async (object, res) =>{
         }    
         return
     }
+    //is triggered when someone loans somthing
     if (object.type === 'utlanUpdate'){
         try{
-            //connects to database
+            //connects to database and updates user
             await mongo().then(async mongoose =>{
                 await brukerSchema.findOneAndUpdate({
                     _id: object._id
                 },{
                     utlant: object.utlant
-                    
                 },{
                     upsert: true
                 })
@@ -73,21 +73,10 @@ module.exports = async (object, res) =>{
            }finally{
             mongoose.connection.close
            }
+
+           updateItemUtlan(object)
            const utlant = object.utlant[object.utlant.length - 1]
-           try{
-            //connects to database
-            await mongo().then(async mongoose =>{
-                await registrationSchema.findOneAndUpdate({
-                    _id: utlant.bCode
-                },{
-                    utlant: {status: true, utlaner: object.elevNavn}
-                },{
-                    upsert: true
-                })
-            })
-           }finally{
-            mongoose.connection.close
-           }
+
            try{
             //connects to database
             await mongo().then(async mongoose =>{
@@ -108,6 +97,7 @@ module.exports = async (object, res) =>{
            }
            return
     }
+
     if(object.type === 'rmUtlan'){
         try{
             //connects to database
@@ -151,4 +141,36 @@ module.exports = async (object, res) =>{
            }
            return
     }
+}
+
+const updateItemUtlan = () => {
+               //the newest scanned item that is to be regisered
+               const utlant = object.utlant[object.utlant.length - 1]
+
+               try{
+                //connects to database and gets user
+                await mongo().then(async mongoose =>{
+                    const user = await brukerSchema.findOne({_id: object._id})
+
+                    await registrationSchema.findOneAndUpdate({
+                        _id: utlant.bCode
+                    },{
+                        utlant: {status: true, utlaner: user}
+                    },{
+                        upsert: true
+                    })
+
+                })
+               }finally{
+                mongoose.connection.close
+               }return
+            //     try{
+            //     //connects to database
+            //     await mongo().then(async mongoose =>{
+
+            //     })
+            //    }finally{
+            //     mongoose.connection.close
+            //    }
+              
 }

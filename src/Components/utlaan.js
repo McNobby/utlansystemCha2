@@ -38,7 +38,6 @@ export default function Utlaan() {
         }
         axios.post(apiAdress, req)
         .then(res =>{
-            console.log(res);
             //checks if scanned object was found and is not loaned out
             if(res.data === 'Det du skannet er ikke registrert!' || res.data === 'allerede lånt ut!'){
                 alert(res.data)
@@ -52,7 +51,8 @@ export default function Utlaan() {
                 name: data.item,
                 bCode: data.barcode,
                 info: data.info,
-                plassering: data.plassering
+                plassering: data.plassering,
+                utlantTime: Date.now()
             }]
             setScanned(newScanned)
             

@@ -51,6 +51,8 @@ module.exports = async (object , res) => {
            }
         return
     }
+
+
     if(getType === 'utlaan'){
         try{
             //connects to database
@@ -71,6 +73,8 @@ module.exports = async (object , res) => {
            }
         return
     }
+
+
     if(getType === 'laanut'){
         try{
             //connects to database to check if its registered
@@ -101,7 +105,8 @@ module.exports = async (object , res) => {
 
         return
     }
-
+    
+    //gets a list of all registered items
     if(getType === 'allUtstyr'){
         try{
             //connects to database
