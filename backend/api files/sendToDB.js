@@ -86,8 +86,8 @@ module.exports = async (object, res) =>{
                     _id: utlant.bCode,
                     user: object._id,
                     info: utlant.info,
-                    item: utlant.name
-                    
+                    item: utlant.name,
+                    timeUtlant: Date.now(),
                 },{
                     upsert: true
                 })
@@ -131,7 +131,7 @@ module.exports = async (object, res) =>{
                 await registrationSchema.findOneAndUpdate({
                     _id: object.bCode
                 },{
-                    utlant: {status: false, utlaner: ''}
+                    utlant: {status: false, utlaner: {}}
                 },{
                     upsert: true
                 })
@@ -143,7 +143,7 @@ module.exports = async (object, res) =>{
     }
 }
 
-const updateItemUtlan = () => {
+const updateItemUtlan = async (object) => {
                //the newest scanned item that is to be regisered
                const utlant = object.utlant[object.utlant.length - 1]
 

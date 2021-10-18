@@ -6,6 +6,6 @@ const utlantSchema = new Schema({
     user: String,
     info: String,
     item: String,
-    timeUtlant: String, 
+    timeUtlant: Number, 
 })
 module.exports = mongoose.model('utlantSchema', utlantSchema)
