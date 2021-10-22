@@ -41,8 +41,7 @@ const Inventory = () => {
                 <p>{i.info}</p>
                 <p>{i.plassering}</p>
                 <p> {i.barcode} </p>
-                <p> {i.utlant.utlaner} </p>
-                
+                <p> {i.utlant.utlaner ? i.utlant.utlaner.navn : ""} </p>
             </div>
         )
     })
