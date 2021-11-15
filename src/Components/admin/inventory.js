@@ -9,7 +9,6 @@ const Inventory = () => {
     const [allUtlant, setAllUtlant] = useState([])
     const [notUtlant, setNotUtlant] = useState([])
     const [status, setStatus] = useState('allUtstyr')
-    
 
     useEffect(()=>{
         getAllItems()
@@ -34,14 +33,38 @@ const Inventory = () => {
         })
     }
 
-    const list = visibleList.map(i =>{
+    const moreInfo = (i) =>{
         return(
-            <div className="listItem" key={i._id} id={i.utlant.status ? "green" : ""}>
+            <div className="moreInfo">
+                <p>{i.utlant.utlaner.epost}</p>
+                <p>{i.utlant.utlaner.navn}</p>
+            </div>
+        )
+    }
+
+    const list = visibleList.map(i =>{
+        const click = (e) =>{
+            if(!e.target.children[5]){
+                return
+            }
+            if(e.target.style.height !== "150px"){
+            //runs if element is not extended
+                e.target.style.height = "150px"
+                e.target.children[5].style.display = "inherit"
+                return
+            }
+                e.target.children[5].style.display = "none"
+                e.target.style.height = ""
+        }
+
+        return(
+            <div className="listItem" onClick={click} key={i._id} id={i.utlant.status ? "green" : ""}>
                 <p>{i.item}</p>
                 <p>{i.info}</p>
                 <p>{i.plassering}</p>
                 <p> {i.barcode} </p>
                 <p> {i.utlant.utlaner ? i.utlant.utlaner.navn : ""} </p>
+                {i.utlant.utlaner ? moreInfo(i) : ""}
             </div>
         )
     })
