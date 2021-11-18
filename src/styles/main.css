@@ -365,6 +365,8 @@ select::before {
   -webkit-box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.137);
           box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.137);
   margin: 10px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
   border-radius: 5px;
   background: white;
   background: linear-gradient(77deg, rgba(255, 255, 255, 0) 80%, #1bd42d 100%);
@@ -397,6 +399,14 @@ select::before {
   -webkit-filter: blur(10px);
           filter: blur(10px);
   margin: -20px;
+}
+
+.listItem .moreInfo {
+  display: none;
+}
+
+.extended {
+  height: 150px;
 }
 
 .Sucsess {
