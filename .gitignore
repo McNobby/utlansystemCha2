@@ -7,7 +7,8 @@
 
 # testing
 /coverage
-
+# security
+mongo.js
 # production
 /build
 

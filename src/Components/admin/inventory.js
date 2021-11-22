@@ -34,10 +34,30 @@ const Inventory = () => {
     }
 
     const moreInfo = (i) =>{
+        //code to find how long item has been loaned out
+        //Firstly we find the amount of senconds item has been loaned out
+        let timeUtlant = (Date.now() - i.utlant.time)/1000
+        //find amount of hours (amount of seconds divided by amount of senconds in an hour)
+        timeUtlant = timeUtlant / 3600
+        //find how many days
+        let timeUtlantDays = timeUtlant / 24
+
+        if (timeUtlantDays <= 1){
+            timeUtlant = "under en dag"
+        }else{
+            //round down
+            timeUtlant = Math.floor(timeUtlant) //hours
+            timeUtlantDays = Math.floor(timeUtlantDays) //days
+            
+            timeUtlant = `${timeUtlantDays}D ${timeUtlant}T `
+        }
+
         return(
             <div className="moreInfo">
                 <p>{i.utlant.utlaner.epost}</p>
                 <p>{i.utlant.utlaner.navn}</p>
+                <p>{timeUtlant}</p>
+                
             </div>
         )
     }
@@ -49,6 +69,7 @@ const Inventory = () => {
             }
             if(e.target.style.height !== "150px"){
             //runs if element is not extended
+                //sets styles for elements to be shown
                 e.target.style.height = "150px"
                 e.target.children[5].style.display = "inherit"
                 return

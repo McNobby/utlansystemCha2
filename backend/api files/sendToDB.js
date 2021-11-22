@@ -155,7 +155,7 @@ const updateItemUtlan = async (object) => {
                     await registrationSchema.findOneAndUpdate({
                         _id: utlant.bCode
                     },{
-                        utlant: {status: true, utlaner: {...user, time: Date.now()}}
+                        utlant: {status: true, utlaner: user, time: Date.now()}
                     },{
                         upsert: true
                     })
