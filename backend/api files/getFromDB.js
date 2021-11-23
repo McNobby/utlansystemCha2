@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const registrationSchema = require('../schemas/articleSchema')
 const brukerSchema = require('../schemas/brukerSchema.js')
 const utlantSchema = require('../schemas/utlantSchema.js')
+const klasseSchema = require('../schemas/klasseSchema.js')
 
 module.exports = async (object , res) => {
 
@@ -122,6 +123,33 @@ module.exports = async (object , res) => {
         return
     }
 
+    if(getType === 'allClasses'){
+        try{
+            //connects to database
+            await mongo().then(async mongoose =>{
+                const result = await klasseSchema.find()
+                console.log('all classes fetched')
+                res.send(result)
+
+            })
+        }finally{
+            mongoose.connection.close
+           }
+        return
+    }
+    //to get every teacher
+    if (getType === 'allTeachers'){
+        try{
+            //connects to database
+            await mongo().then(async mongoose =>{
+                const result = await brukerSchema.find({teacher: true})
+                res.send(result)
+            })
+        }finally{
+            mongoose.connection.close
+           }
+        return
+    }
 
 }
 

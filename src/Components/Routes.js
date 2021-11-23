@@ -11,6 +11,7 @@ import AdminPanel from './admin/AdminPanel';
 import NewTeacher from './admin/newTeacher';
 import Innlevering from './Innlevering';
 import Inventory from './admin/inventory';
+import AddClassCard from './admin/addClass'
 import NotFound from './404';
 
 const Routes = () => {
@@ -31,6 +32,7 @@ const Routes = () => {
                 <Route exact path="/admin/regutstyr" component={UtstyrReg}/>
                 <Route exact path="/admin/nylaerer" component={NewTeacher} />
                 <Route exact path="/admin/inventory" component={Inventory} />
+                <Route exact path="/admin/addclass" component={AddClassCard} />
                 <Route component={NotFound} />
                 </Switch>
             </Router>

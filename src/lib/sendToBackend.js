@@ -28,6 +28,17 @@ const sendToBackend = (type, obj) => {
         })
         return
     }
-    
+    if (type === 'updateClass'){
+        //sends inputted class info for registration or class update
+        
+        const newClass = {...obj, type: type}
+        console.log('hello world');
+        axios.post(apiAdress, newClass)
+        .then((res)=>{
+            console.log(res);
+        })
+        return
+    }
+
 }
 export default sendToBackend

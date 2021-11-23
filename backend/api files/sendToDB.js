@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const registrationSchema = require('../schemas/articleSchema')
 const brukerSchema = require('../schemas/brukerSchema.js')
 const utlantSchema = require('../schemas/utlantSchema.js')
+const klasseSchema = require('../schemas/klasseSchema.js')
 
 
 module.exports = async (object, res) =>{
@@ -141,6 +142,28 @@ module.exports = async (object, res) =>{
            }
            return
     }
+    //save class info in db, should be used for updates and new entries(not including new students)
+    if(object.type === 'updateClass'){
+        delete object.type
+        try{
+            //connects to database
+            await mongo().then(async mongoose =>{
+                await klasseSchema.findOneAndUpdate({
+                    _id: object._id
+                },{
+                    _id: object._id,
+                    name: object.name,
+                    shortName: object.shortName,
+                    teacher: object.teacher,
+                },{
+                    upsert: true
+                })
+            })
+           }finally{
+            mongoose.connection.close
+           }
+    }
+    
 }
 
 const updateItemUtlan = async (object) => {
@@ -164,13 +187,5 @@ const updateItemUtlan = async (object) => {
                }finally{
                 mongoose.connection.close
                }return
-            //     try{
-            //     //connects to database
-            //     await mongo().then(async mongoose =>{
-
-            //     })
-            //    }finally{
-            //     mongoose.connection.close
-            //    }
               
 }
