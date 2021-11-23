@@ -50,7 +50,7 @@ const AddClassCard = () => {
         //sends info to db
         const setTeacher = teachers.find(i => i._id = teacher)
         //checks if every field is filled out
-        if (name || shortName || teacher == ''){
+        if (name || shortName || teacher === ''){
             alert('Du må fylle ut alle feltene')
             return
         }
