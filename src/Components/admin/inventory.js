@@ -43,13 +43,18 @@ const Inventory = () => {
         let timeUtlantDays = timeUtlant / 24
 
         if (timeUtlantDays <= 1){
-            timeUtlant = "under en dag"
+            timeUtlant = Math.floor(timeUtlant) //hours since loan
+
+            timeUtlant = `${timeUtlant}T` //set variable to show
         }else{
             //round down
-            timeUtlant = Math.floor(timeUtlant) //hours
+            console.log(timeUtlant);
+            timeUtlant = Math.floor(timeUtlant) //hours since loan
             timeUtlantDays = Math.floor(timeUtlantDays) //days
+
+            timeUtlant = timeUtlant-(timeUtlantDays*24) //find the rest amout of hours
             
-            timeUtlant = `${timeUtlantDays}D ${timeUtlant}T `
+            timeUtlant = `${timeUtlantDays}D ${timeUtlant}T ` //set variable to show
         }
 
         return(
@@ -57,13 +62,13 @@ const Inventory = () => {
                 <p>{i.utlant.utlaner.epost}</p>
                 <p>{i.utlant.utlaner.navn}</p>
                 <p>{timeUtlant}</p>
-                
             </div>
         )
     }
 
     const list = visibleList.map(i =>{
         const click = (e) =>{
+            
             if(!e.target.children[5]){
                 return
             }
