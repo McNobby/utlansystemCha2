@@ -84,7 +84,7 @@ const Inventory = () => {
         }
 
         return(
-            <div className="listItem" onClick={click} key={i._id} id={i.utlant.status ? "green" : ""}>
+            <div className="listItem" onClick={click} key={i._id} id={i.utlant.status ? "red" : "green"}>
                 <p>{i.item}</p>
                 <p>{i.info}</p>
                 <p>{i.plassering}</p>

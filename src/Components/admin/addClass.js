@@ -11,7 +11,7 @@ const AddClassCard = () => {
     const [shortName, setShortName] = useState('')
     const [teacher, setTeacher] = useState('')
 
-    //runs when component is loaded one time
+    //runs when component is loaded, one time
     useEffect(()=>{
         getAll()
     },[])
@@ -26,11 +26,12 @@ const AddClassCard = () => {
         .then(res =>{
             //saves all teachers in state
             setTeachers(res.data)
+
         })
     }
 
     const tilbake = () => {
-        window.location.href = "/admin"
+        window.history.back()
     }
 
     const stateSave = (e) => {
@@ -48,23 +49,23 @@ const AddClassCard = () => {
 
     const saveToDB = () => {
         //sends info to db
-        const setTeacher = teachers.find(i => i._id = teacher)
+        const teacherSet = teachers.find(i => i._id === teacher)
         //checks if every field is filled out
-        if (name || shortName || teacher === ''){
+        if (name === '' || shortName === '' || teacher === ''){
             alert('Du må fylle ut alle feltene')
             return
         }
-        
+        console.log('sendt to DB');
         sendToBackend('updateClass', {
             _id: shortName,
             name: name,
             shortName: shortName,
-            teacher: setTeacher
+            teacher: teacherSet
         })
     }
     const teachersOptions = teachers.map(i =>{
         return(
-            <option key={i._id} value={i._id}>{i.navn}</option>
+            <option onClick={stateSave} key={i._id} value={i._id}>{i.navn}</option>
         )
     })
 
@@ -76,7 +77,7 @@ const AddClassCard = () => {
             <h3>Forkortelse:</h3>
             <input type="text" id="kort" placeholder="Forkortelse (1MK, 2IT)" onKeyUp={stateSave} />
             <h3>Lærer:</h3>
-            <select name="laerer" id="laerer" onClick={stateSave}>
+            <select name="laerer" id="laerer" >
                 <option value="standard" id="teacher" >Velg lærer</option>
                 {teachersOptions}
             </select>

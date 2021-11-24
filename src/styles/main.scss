@@ -182,9 +182,14 @@ select{
     height: 70%;
     padding: 20px;
     
-    #green{
+    #red{
         background: rgb(255,255,255);
         background: linear-gradient(77deg, rgba(255,255,255,0) 80%, rgba(246,49,49,1) 100%); 
+    }
+
+    #green{
+        background: rgb(255,255,255);
+        background: linear-gradient(77deg, rgba(255,255,255,0) 80%, rgba(27,212,45,1) 100%);
     }
 }
 .listItem{
@@ -197,13 +202,10 @@ select{
     margin: 10px;
     transition: 0.2s;
     border-radius: 5px;
-    background: rgb(255,255,255);
-    background: linear-gradient(77deg, rgba(255,255,255,0) 80%, rgba(27,212,45,1) 100%); 
+    
     &:nth-child(2n){
         @include blur();
         border-radius: 5px;
-        background: rgb(255,255,255);
-        background: linear-gradient(77deg, rgba(255,255,255,0) 80%, rgba(27,212,45,1) 100%); 
     }
     .moreInfo{
         display: none;
@@ -230,6 +232,14 @@ select{
     margin: 40px 70px;
     animation: 3.1s fadein;
 }
+
+.btn-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    width: 100%;
+    justify-items: center;
+}
+
 
 @keyframes fadein {
     from{

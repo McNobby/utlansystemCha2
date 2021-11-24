@@ -347,9 +347,14 @@ select::before {
   padding: 20px;
 }
 
-.list #green {
+.list #red {
   background: white;
   background: linear-gradient(77deg, rgba(255, 255, 255, 0) 80%, #f63131 100%);
+}
+
+.list #green {
+  background: white;
+  background: linear-gradient(77deg, rgba(255, 255, 255, 0) 80%, #1bd42d 100%);
 }
 
 .listItem {
@@ -368,8 +373,6 @@ select::before {
   -webkit-transition: 0.2s;
   transition: 0.2s;
   border-radius: 5px;
-  background: white;
-  background: linear-gradient(77deg, rgba(255, 255, 255, 0) 80%, #1bd42d 100%);
 }
 
 .listItem:nth-child(2n) {
@@ -381,8 +384,6 @@ select::before {
   background: inherit;
   overflow: hidden;
   border-radius: 5px;
-  background: white;
-  background: linear-gradient(77deg, rgba(255, 255, 255, 0) 80%, #1bd42d 100%);
 }
 
 .listItem:nth-child(2n)::before {
@@ -427,6 +428,15 @@ select::before {
   margin: 40px 70px;
   -webkit-animation: 3.1s fadein;
           animation: 3.1s fadein;
+}
+
+.btn-grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(200px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  width: 100%;
+  justify-items: center;
 }
 
 @-webkit-keyframes fadein {
