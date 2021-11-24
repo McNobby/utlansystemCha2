@@ -57,7 +57,6 @@ const AddClassCard = () => {
         }
         console.log('sendt to DB');
         sendToBackend('updateClass', {
-            _id: shortName,
             name: name,
             shortName: shortName,
             teacher: teacherSet
