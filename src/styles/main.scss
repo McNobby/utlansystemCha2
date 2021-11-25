@@ -255,13 +255,22 @@ select{
     left: 0;
     top: 0;
     bottom: 0;
-    height: 50%;
-    width: 50%;
+    max-height: 70%;
+    max-width: 75%;
+    padding: 30px;
     margin: auto;
     z-index: 1000;
     .wrap{
         width: 90%;
         text-align: center;
+    }
+}
+
+.btn-group{
+    display: flex;
+    margin-bottom: 20px;
+    button{
+        margin: 20px;
     }
 }
 

@@ -80,8 +80,11 @@ const AddClassCard = () => {
                 <option value="standard" id="teacher" >Velg lærer</option>
                 {teachersOptions}
             </select>
-            <button className="shadow" onClick={saveToDB} >Lagre</button>
-            <button className="shadow" onClick={tilbake} >Tilbake</button>
+            <div className="btn-group">
+                <button className="shadow" onClick={saveToDB} >Lagre</button>
+                <button className="shadow" onClick={tilbake} >Tilbake</button>
+            </div>
+
         </div>
     )
 }

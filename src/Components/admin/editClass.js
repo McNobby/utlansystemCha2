@@ -96,9 +96,11 @@ const EditClass = (props) => {
                     {teachersOptions}
                 </select>
             </div>
+            <div className="btn-group">
+                <button onClick={saveToDB} id="red-gradient">Lagre</button>
+                <button onClick={close} id="red-gradient">Lukk</button>
+            </div>
 
-            <button onClick={saveToDB} id="red-gradient">Lagre</button>
-            <button onClick={close} id="red-gradient">Lukk</button>
             
         </div>
     )
