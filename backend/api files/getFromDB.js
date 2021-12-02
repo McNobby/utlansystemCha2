@@ -150,6 +150,18 @@ module.exports = async (object , res) => {
            }
         return
     }
+    if (getType === 'allUsers'){
+        try{
+            //connects to database
+            await mongo().then(async mongoose =>{
+                const result = await brukerSchema.find({teacher: false})
+                res.send(result)
+            })
+        }finally{
+            mongoose.connection.close
+           }
+        return
+    }
 
 }
 

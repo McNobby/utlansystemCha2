@@ -144,6 +144,9 @@ const Inventory = () => {
     const tilbake = () =>{
         window.history.back()
     }
+    const utstyrReg = () =>{
+        window.location.href ="/admin/regutstyr"
+    }
 
     return (
         <div className="bigCard">
@@ -167,9 +170,9 @@ const Inventory = () => {
                             <option onClick={handlePlace} value="IM lager">IM lager</option>
                         </select>
                     </div>
-                    <div className="wrap">
-                    <button className="shadow" onClick={tilbake} id="red-gradient">Tilbake</button>
-
+                    <div className="wrap" style={{flexDirection: "row"}}>
+                        <button className="shadow" onClick={utstyrReg} >Registrer utstyr</button>
+                        <button className="shadow" onClick={tilbake} id="red-gradient">Tilbake</button>
                     </div>
 
                 </div>

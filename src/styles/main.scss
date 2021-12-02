@@ -160,8 +160,11 @@ select{
             align-items: center;
             .wrap{
                 display: flex;
-                flex-direction: column;
                 align-items: center;
+                flex-direction: column;
+                button{
+                    margin-left: 20px;
+                }
             }
         }  
     }
@@ -169,7 +172,7 @@ select{
         @include blur();
         height: 50px;
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         justify-items: center;
         align-items: center;
         border-radius: 5px;
@@ -198,7 +201,7 @@ select{
     display: grid;
     justify-items: center;
     align-items: center;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     height: 50px;
     box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.137);
     margin: 10px;

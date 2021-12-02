@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
-import { useUpdateLogin } from '../loginContext'
+import { useUpdateLogin, useLogin } from '../loginContext'
 
 const Plassering = () => {
+
+    const loggedIn = useLogin() //login context
 
     const [input, setInput] = useState("velg")
 
@@ -14,6 +16,7 @@ const Plassering = () => {
 
     const handleSubmit = () => {
         if(input !== 'velg'){
+            delete loggedIn.plassering
             updateLogin({plassering: input})
             return
         }

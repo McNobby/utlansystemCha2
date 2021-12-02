@@ -14,6 +14,8 @@ import Inventory from './admin/inventory';
 import AddClassCard from './admin/addClass'
 import NotFound from './404';
 import ClassIndex from './admin/classIndex';
+import UserList from './admin/userList';
+import TeacherList from './admin/teacherList';
 
 const Routes = () => {
 
@@ -35,6 +37,8 @@ const Routes = () => {
                 <Route exact path="/admin/inventory" component={Inventory} />
                 <Route exact path="/admin/addclass" component={AddClassCard} />
                 <Route exact path="/admin/allclasses" component={ClassIndex} />
+                <Route exact path="/admin/allusers" component={UserList} />
+                <Route exact path="/admin/allteachers" component={TeacherList} />
                 <Route component={NotFound} />
                 </Switch>
             </Router>

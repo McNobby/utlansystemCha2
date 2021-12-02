@@ -100,8 +100,6 @@ const EditClass = (props) => {
                 <button onClick={saveToDB} id="red-gradient">Lagre</button>
                 <button onClick={close} id="red-gradient">Lukk</button>
             </div>
-
-            
         </div>
     )
 }

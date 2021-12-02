@@ -34,7 +34,7 @@ const UtstyrReg = () => {
     }
 
     const tilbake = () =>{
-        window.location.href ="/admin"
+        window.history.back()
     }
 
     const handleSubmit = () =>{

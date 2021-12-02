@@ -296,13 +296,17 @@ select::before {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+}
+
+.bigCard .topControl .filters .wrap button {
+  margin-left: 20px;
 }
 
 .bigCard .top {
@@ -316,8 +320,8 @@ select::before {
   height: 50px;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[5];
-      grid-template-columns: repeat(5, 1fr);
+  -ms-grid-columns: (minmax(200px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   justify-items: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -366,8 +370,8 @@ select::before {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -ms-grid-columns: (1fr)[5];
-      grid-template-columns: repeat(5, 1fr);
+  -ms-grid-columns: (minmax(200px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   height: 50px;
   -webkit-box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.137);
           box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.137);
