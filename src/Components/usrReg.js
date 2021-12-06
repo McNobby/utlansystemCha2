@@ -36,13 +36,20 @@ const UsrReg = () => {
         alert("Du mangler noe!")
     }
 
+    const back = () => {
+        window.history.back()
+    }
+
     return (
         <div className="narrow-card">
             <h1>Registrering</h1>
             <input onKeyUp={elevIDSave} type="text" placeholder="elevID (ikke feide inlogging)" />
             <input onKeyUp={navnSave} type="text" placeholder="Fornavn" />
             <input onKeyUp={emailSave} type="text" placeholder="E-post" />
-            <button onClick={handleSubmit} className="submit-btn">Registrer</button>
+            <div className="btn-group">
+                <button onClick={handleSubmit} className="submit-btn">Registrer</button>
+                <button onClick={back} className="submit-btn">Tilbake</button>
+            </div>
         </div>
     )
 }

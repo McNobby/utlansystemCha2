@@ -12,7 +12,6 @@ const sendToBackend = (type, obj) => {
 
         axios.post(apiAdress, user)
         .then((res)=>{
-            window.history.back()
             console.log(res);
         })
         return

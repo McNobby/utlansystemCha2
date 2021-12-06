@@ -1,15 +1,16 @@
 import {React, useEffect, useState} from 'react'
 import axios from 'axios'
 import {apiAdress} from '../config.json'
-import sendToBackend from '../../lib/sendToBackend'
 import EditUser from './editUser'
 
 const UserList = () => {
 
     const [users, setUsers] = useState([])
+    const [user, setUser] = useState({})
     const [name, setName] = useState('')
     const [mail, setMail] = useState('')
-    const [shown, setShown] = useState('')
+    const [id, setId] = useState('')
+    const [shown, setShown] = useState('hidden')
 
     useEffect(()=>{
         getAllItems()
@@ -31,6 +32,10 @@ const UserList = () => {
     const list = users.map(i =>{
         const click = () =>{
             setShown('editCard')
+            setMail(i.epost)
+            setName(i.navn)
+            setUser(i)
+            setId(i._id)
         }
         return(
             <div className="listItem" onClick={click} key={i._id}>
@@ -71,7 +76,7 @@ const UserList = () => {
             <div className="list">
                 {list}
             </div>
-            <EditUser name={name} email={mail} shown={shown} setShown={setShown}/>
+            <EditUser name={name} email={mail} shown={shown} _id={id} user={user} refresh={getAllItems} setShown={setShown}/>
         </div>
     )
 }

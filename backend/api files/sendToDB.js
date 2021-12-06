@@ -45,7 +45,7 @@ module.exports = async (object, res) =>{
              },{
                  _id: object._id,
                  navn: object.navn,
-                 tlfNum: object.tlfNum,
+                 class: object.class,
                  epost: object.epost,
                  teacher: object.teacher
                  

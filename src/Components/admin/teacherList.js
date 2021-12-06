@@ -1,11 +1,16 @@
 import {React, useEffect, useState} from 'react'
 import axios from 'axios'
 import {apiAdress} from '../config.json'
-import sendToBackend from '../../lib/sendToBackend'
+import EditUser from './editUser'
 
 const TeacherList = () => {
 
     const [users, setUsers] = useState([])
+    const [user, setUser] = useState({})
+    const [name, setName] = useState('')
+    const [mail, setMail] = useState('')
+    const [id, setId] = useState('')
+    const [shown, setShown] = useState('hidden')
 
     useEffect(()=>{
         getAllItems()
@@ -26,7 +31,11 @@ const TeacherList = () => {
 
     const list = users.map(i =>{
         const click = () =>{
-
+            setShown('editCard')
+            setMail(i.epost)
+            setName(i.navn)
+            setUser(i)
+            setId(i._id)
         }
         return(
             <div className="listItem" onClick={click} key={i._id}>
@@ -48,7 +57,7 @@ const TeacherList = () => {
     return (
         <div className="bigCard">
             <div className="topControl">
-                <h2>Brukere oversikt</h2>
+                <h2>Lærere oversikt</h2>
                 <div className="filters">
                     <div className="wrap">
                         <button className="shadow" onClick={reg} id="red-gradient">Ny Lærer</button>
@@ -67,6 +76,8 @@ const TeacherList = () => {
             <div className="list">
                 {list}
             </div>
+            <EditUser 
+            name={name} email={mail} _id={id} shown={shown} user={user} refresh={getAllItems} setShown={setShown}/>
         </div>
     )
 }
