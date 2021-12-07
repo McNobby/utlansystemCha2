@@ -58,7 +58,7 @@ module.exports = async (object, res) =>{
         }    
         return
     }
-    //is triggered when someone loans somthing
+    //is triggered when someone loans something
     if (object.type === 'utlanUpdate'){
         try{
             //connects to database and updates user
@@ -144,7 +144,7 @@ module.exports = async (object, res) =>{
     }
     //save class info in db, should be used for updates and new entries(not including new students)
     if(object.type === 'updateClass'){
-        delete object.type
+        
         let _id = object._id
         if(!object._id){
             _id = uuidv4()

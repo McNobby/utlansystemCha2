@@ -11,9 +11,23 @@ const UserList = () => {
     const [mail, setMail] = useState('')
     const [id, setId] = useState('')
     const [shown, setShown] = useState('hidden')
+    const [classes, setClasses] = useState([])
+
+    const getAllClasses = () => {
+        let req = {
+            type:'get',
+            getType:'allClasses'
+        }
+
+        axios.post(apiAdress, req)
+        .then(res =>{
+            setClasses(res.data)
+        })
+    }
 
     useEffect(()=>{
         getAllItems()
+        getAllClasses()
     },[])
 
     const getAllItems = () => {
@@ -37,11 +51,15 @@ const UserList = () => {
             setUser(i)
             setId(i._id)
         }
+
+        // const klasse = classes.find(e => e._id === i.class._id)
+        // console.log(klasse.shortName);
         return(
             <div className="listItem" onClick={click} key={i._id}>
                 <p>{i.navn}</p>
                 <p>{i.epost}</p>
-                <p>{i.utlant.length}</p> 
+                <p>{i.utlant.length}</p>
+                <p>{i.class._id}</p> 
             </div>
         )
     })
@@ -76,7 +94,7 @@ const UserList = () => {
             <div className="list">
                 {list}
             </div>
-            <EditUser name={name} email={mail} shown={shown} _id={id} user={user} refresh={getAllItems} setShown={setShown}/>
+            <EditUser name={name} email={mail} shown={shown} _id={id} classes={classes} user={user} refresh={getAllItems} setShown={setShown}/>
         </div>
     )
 }

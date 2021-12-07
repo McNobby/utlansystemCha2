@@ -47,6 +47,28 @@ const EditClass = (props) => {
             teacherSet = classInfo.teacher
         }else{//if there is a teacher chosen, find the teacher by id
             teacherSet = teachers.find(i => i._id === teacher)
+            //remove class from previous teacher and set to the new one.
+            //set for old teacher
+            sendToBackend('usrUpdate', {
+                _id: classInfo.teacher._id,
+                class: {},
+                navn: classInfo.teacher.navn,
+                epost: classInfo.teacher.epost,
+                teacher: classInfo.teacher.teacher
+            })
+            //set new teacher
+            sendToBackend('usrUpdate', {
+                _id: teacherSet._id,
+                navn: teacherSet.navn,
+                epost: teacherSet.epost,
+                teacher: teacherSet.teacher,
+                class:{
+                    _id: classInfo._id,
+                    name: nameVar,
+                    shortName: shortNameVar,
+                    teacher: teacherSet
+                }
+            })
         }
 
         console.log(nameVar, shortNameVar, teacherSet);

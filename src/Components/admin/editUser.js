@@ -1,22 +1,25 @@
 import React, { useState } from 'react'
 import sendToBackend from '../../lib/sendToBackend'
 
-const EditUser = ({name, email, shown, _id, setShown, refresh, user}) => {
+const EditUser = ({name, email, shown, _id, setShown, refresh, user, classes}) => {
+    if (!user.class) {
+        user.class = {}
+    }
 
     const [newName, setNewName] = useState('')
     const [newMail, setNewMail] = useState('')
+    const [newClass, setNewClass] = useState('')
 
     const close = () => {
         setShown('hidden')
     }
 
     const saveToDB = () => {
-        let nameToSave = ""
-        let mailToSave = ""
 
         //set newly inputted values
-        nameToSave = newName
-        mailToSave = newMail
+        let nameToSave = newName
+        let mailToSave = newMail
+        let classToSave = newClass
         //if there aren't any new values
         if(newName === ''){
             nameToSave = name
@@ -24,12 +27,19 @@ const EditUser = ({name, email, shown, _id, setShown, refresh, user}) => {
         if(newMail === ''){
             mailToSave = email
         }
+        if(newClass === ''){
+            classToSave = user.class._id
+        }
+
 
         sendToBackend('usrUpdate',{
             _id: _id,
             navn: nameToSave,
             epost: mailToSave,
-            teacher: user.teacher
+            teacher: user.teacher,
+            class: {
+                _id: classToSave
+            }
         })
         setShown('hidden')
         refresh()
@@ -40,8 +50,13 @@ const EditUser = ({name, email, shown, _id, setShown, refresh, user}) => {
             setNewName(e.target.value)
             return
         }
-        setNewMail(e.target.value)
+        if(e.target.id === 'email'){
+            setNewMail(e.target.value)
+            return
+        }
+        setNewClass(e.target.value)
     }
+
 
     return (
         <div className={shown}>
@@ -55,6 +70,7 @@ const EditUser = ({name, email, shown, _id, setShown, refresh, user}) => {
                 <h2>Epost:</h2>
                 <input type="text" placeholder={email} id="email" onKeyUp={keyUp} />
             </div>
+            {user.teacher ? "" : <EditClass user={user} keyUp={keyUp} classes={classes}/>}
             <div className="btn-group">
                 <button onClick={close} id="red-gradient">Lukk</button>
                 <button onClick={saveToDB} id="red-gradient">Lagre</button>
@@ -64,3 +80,27 @@ const EditUser = ({name, email, shown, _id, setShown, refresh, user}) => {
 }
 
 export default EditUser
+
+export function EditClass ({user, classes, keyUp}) {
+        
+    if(!classes){
+        classes=[]
+    }
+    
+    const classesOptionsList = classes.map(i=>{
+
+        return(
+            <option key={i._id} value={i._id} onClick={keyUp}>{i.shortName}</option>
+        )
+    })
+
+    return(
+        <div className="wrap">
+        <h2>Klasse:</h2>
+        <select name="classes" id="classes">
+            <option value="" disabled defaultValue>{user.class.shortName}</option>
+            {classesOptionsList}
+        </select>
+    </div>
+    )
+}
