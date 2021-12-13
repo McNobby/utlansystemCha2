@@ -5,10 +5,10 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   font-family: Poppins;
-  font-weight: 600;
 }
 
 .app {
+  font-weight: 600;
   height: 100vh;
   background: #2B302E;
   color: #fff;
@@ -368,6 +368,7 @@ select::before {
 }
 
 .listItem {
+  font-weight: 400;
   display: -ms-grid;
   display: grid;
   justify-items: center;
@@ -512,6 +513,7 @@ select::before {
 
 .btn-group button {
   margin: 20px;
+  font-weight: 400;
 }
 
 .hidden {

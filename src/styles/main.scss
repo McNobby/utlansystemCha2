@@ -5,11 +5,11 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Poppins;
-    font-weight: 600;
 }
 
 //main and backround styling
 .app{
+    font-weight: 600;
     height: 100vh;
     background: #2B302E;
     color: #fff;
@@ -203,6 +203,7 @@ select{
     }
 }
 .listItem{
+    font-weight: 400;
     display: grid;
     justify-items: center;
     align-items: center;
@@ -212,7 +213,6 @@ select{
     margin: 10px;
     transition: 0.2s;
     border-radius: 5px;
-    
     &:nth-child(2n){
         @include blur();
         border-radius: 5px;
@@ -279,6 +279,7 @@ select{
     margin-bottom: 20px;
     button{
         margin: 20px;
+        font-weight: 400;
     }
 }
 
