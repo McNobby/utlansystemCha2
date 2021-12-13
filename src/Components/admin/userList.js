@@ -44,13 +44,13 @@ const UserList = () => {
             res.data.forEach(e => {
                 if(!e.class){
                     //if there is no class on the user
-                    usersWithClasses = [...usersWithClasses, {...e, class: {shortName: "Ingen klasse"}}]
+                    usersWithClasses = [...usersWithClasses, {...e, class: {shortName: "Mangler klasse"}}]
                     return;
                 }
                 const foundClass = classes.find(c => c._id === e.class._id)
                 usersWithClasses = [...usersWithClasses, {...e, class: {
                     shortName: foundClass.shortName,
-                    _id: e._id
+                    _id: foundClass._id
                 }}]
             })
 

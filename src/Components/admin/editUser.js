@@ -20,6 +20,7 @@ const EditUser = ({name, email, shown, _id, setShown, refresh, user, classes}) =
         let nameToSave = newName
         let mailToSave = newMail
         let classToSave = newClass
+
         //if there aren't any new values
         if(newName === ''){
             nameToSave = name
@@ -31,7 +32,6 @@ const EditUser = ({name, email, shown, _id, setShown, refresh, user, classes}) =
             classToSave = user.class._id
         }
 
-
         sendToBackend('usrUpdate',{
             _id: _id,
             navn: nameToSave,
@@ -42,7 +42,7 @@ const EditUser = ({name, email, shown, _id, setShown, refresh, user, classes}) =
             }
         })
         setShown('hidden')
-        refresh(classes)
+        refresh(classes) //refreshes the visible list in the parent component
     }
 
     const keyUp = (e) => {
@@ -98,7 +98,7 @@ export function EditClass ({user, classes, keyUp}) {
         <div className="wrap">
         <h2>Klasse:</h2>
         <select name="classes" id="classes">
-            <option value="" disabled defaultValue>{user.class.shortName}</option>
+            <option value={user.class._id} disabled selected>{user.class.shortName}</option>
             {classesOptionsList}
         </select>
     </div>
