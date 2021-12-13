@@ -42,7 +42,7 @@ const EditUser = ({name, email, shown, _id, setShown, refresh, user, classes}) =
             }
         })
         setShown('hidden')
-        refresh()
+        refresh(classes)
     }
 
     const keyUp = (e) => {
