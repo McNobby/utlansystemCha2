@@ -30,7 +30,7 @@ export default function TopBar() {
 
     return(
         <div className="navBar" style={loggedIn.navn ? {justifyContent: 'space-around'} : {justifyContent: 'center'}}>
-            <h1 onClick={home}  ><span id="blue">cha</span>media utlån [Beta]</h1>
+            <h1 onClick={home}  ><span id="blue">Cha</span>media utlån [Beta]</h1>
 
             <div className="wrap">
                 <h2>{loggedIn.navn}</h2>

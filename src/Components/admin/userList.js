@@ -13,6 +13,10 @@ const UserList = () => {
     const [shown, setShown] = useState('hidden')
     const [classes, setClasses] = useState([])
 
+    useEffect(()=>{
+        getAllClasses()
+    },[])
+
     const getAllClasses = () => {
         let req = {
             type:'get',
@@ -21,16 +25,13 @@ const UserList = () => {
 
         axios.post(apiAdress, req)
         .then(res =>{
+            console.log('classes fetched');
             setClasses(res.data)
+            getAllItems(res.data) //this function depends on the classes array
         })
     }
 
-    useEffect(()=>{
-        getAllItems()
-        getAllClasses()
-    },[])
-
-    const getAllItems = () => {
+    const getAllItems = (classes) => {
         let req = {
             type:'get',
             getType:'allUsers'
@@ -38,8 +39,23 @@ const UserList = () => {
 
         axios.post(apiAdress, req)
         .then(res =>{
-            console.log(res.data);
-            setUsers(res.data)
+            console.log(classes);
+            let usersWithClasses = []
+            res.data.forEach(e => {
+                if(!e.class){
+                    //if there is no class on the user
+                    usersWithClasses = [...usersWithClasses, {...e, class: {shortName: "Ingen klasse"}}]
+                    return;
+                }
+                const foundClass = classes.find(c => c._id === e.class._id)
+                usersWithClasses = [...usersWithClasses, {...e, class: {
+                    shortName: foundClass.shortName,
+                    _id: e._id
+                }}]
+            })
+
+            console.log(usersWithClasses);
+            setUsers(usersWithClasses)
         })
     }
 
@@ -52,14 +68,12 @@ const UserList = () => {
             setId(i._id)
         }
 
-        // const klasse = classes.find(e => e._id === i.class._id)
-        // console.log(klasse.shortName);
         return(
             <div className="listItem" onClick={click} key={i._id}>
                 <p>{i.navn}</p>
                 <p>{i.epost}</p>
                 <p>{i.utlant.length}</p>
-                <p>{i.class._id}</p> 
+                <p>{i.class.shortName}</p> 
             </div>
         )
     })
@@ -90,6 +104,7 @@ const UserList = () => {
                 <p>Navn</p>
                 <p>Epost</p>
                 <p>Antall utlånte</p>
+                <p>Klasse</p>
                 </div>
             <div className="list">
                 {list}
