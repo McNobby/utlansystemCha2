@@ -5,8 +5,15 @@ const brukerSchema = require('../schemas/brukerSchema.js')
 const utlantSchema = require('../schemas/utlantSchema.js')
 const klasseSchema = require('../schemas/klasseSchema.js')
 const { v4: uuidv4 } = require('uuid');
+const deleteFromDB = require('./deleteFromDB.js')
+
 
 module.exports = async (object, res) =>{
+
+    if(object.type.startsWith('delete')){
+        deleteFromDB(object, res)
+        return
+    }
 
     res.send('sendt to db')
     //utstyr registrering

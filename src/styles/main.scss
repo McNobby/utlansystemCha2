@@ -251,12 +251,13 @@ select{
 }
 
 .editCard{    
-    //styling
+    //inner styling
     @include blur();
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
+    
     //size and posistion
     position: absolute;
     right: 0;
