@@ -39,7 +39,7 @@ const UserList = () => {
 
         axios.post(apiAdress, req)
         .then(res =>{
-            console.log(classes);
+            console.log(classes, res);
             let usersWithClasses = []
             res.data.forEach(e => {
                 if(!e.class){

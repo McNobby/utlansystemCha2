@@ -175,6 +175,18 @@ module.exports = async (object, res) =>{
             mongoose.connection.close
            }
     }
+    if(object.type === 'rmUser'){
+        try{
+            //connects to database
+            await mongo().then(async mongoose =>{
+                await brukerSchema.deleteOne({
+                    _id: object._id
+                })
+            })
+           }finally{
+            mongoose.connection.close
+           }
+    }
     
 }
 

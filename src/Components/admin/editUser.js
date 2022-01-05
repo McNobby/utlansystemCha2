@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import sendToBackend from '../../lib/sendToBackend'
+import ConfirmAction from './ConfirmAction'
 
 const EditUser = ({name, email, shown, _id, setShown, refresh, user, classes}) => {
     if (!user.class) {
@@ -9,6 +10,8 @@ const EditUser = ({name, email, shown, _id, setShown, refresh, user, classes}) =
     const [newName, setNewName] = useState('')
     const [newMail, setNewMail] = useState('')
     const [newClass, setNewClass] = useState('')
+    const [showConfirm, setShowConfirm] = useState('hidden')
+    const [confirmed, setConfirmed] = useState(false)
 
     const close = () => {
         setShown('hidden')
@@ -57,6 +60,19 @@ const EditUser = ({name, email, shown, _id, setShown, refresh, user, classes}) =
         setNewClass(e.target.value)
     }
 
+    const slett = () => {
+        setShowConfirm('confirmAction')
+    }
+
+    if(confirmed === true){
+        sendToBackend('rmUser',{
+            _id: user._id,
+        })
+        setConfirmed(false)
+        setShowConfirm('hidden')
+        setShown('hidden')
+        refresh(classes)
+    }
 
     return (
         <div className={shown}>
@@ -72,9 +88,13 @@ const EditUser = ({name, email, shown, _id, setShown, refresh, user, classes}) =
             </div>
             {user.teacher ? "" : <EditClass user={user} keyUp={keyUp} classes={classes}/>}
             <div className="btn-group">
+                <button onClick={slett} id="red-btn">Slett</button>
                 <button onClick={close} id="red-gradient">Lukk</button>
-                <button onClick={saveToDB} id="red-gradient">Lagre</button>
+                <button onClick={saveToDB} id="green-btn">Lagre</button>
             </div>
+            <ConfirmAction confirmWord={user.navn}
+            shown={showConfirm} setShown={setShowConfirm} setConfrimed={setConfirmed}
+            description={`Er du sikker du vil slette brukeren ${user.navn}?`}/>
         </div>
     )
 }

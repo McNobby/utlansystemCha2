@@ -25,6 +25,12 @@
     font-weight: 500;
 }
 
+#red-btn{
+    background-color: rgb(255, 0, 0);
+}
+#green-btn{
+    background-color: #008000;
+}
 
 .navBar{
     position: fixed;
@@ -292,6 +298,23 @@ select{
 
 .hidden{
     display: none;
+}
+
+.confirmAction{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 250px;
+    width: 500px;
+    padding: 30px;
+    @include blur();
+    position: absolute;
+    // backgroun{d:#8f8f8f;
+    h2{
+        font-size: 14px;
+        font-weight: 500;
+    }
 }
 
 @keyframes fadein {

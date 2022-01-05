@@ -38,6 +38,17 @@ const sendToBackend = (type, obj) => {
         })
         return
     }
+    if (type === 'rmUser'){
+        //sends inputted user info for registration or user update
+        
+        const user = {...obj, type: type}
+
+        axios.post(apiAdress, user)
+        .then((res)=>{
+            console.log(res);
+        })
+        return
+    }
 
 }
 export default sendToBackend
