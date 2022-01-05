@@ -29,8 +29,8 @@ const AdminPanel = () => {
             <div className="btn-grid">
                 <button className="shadow" onClick={regTeacher}>Lærere</button>
                 <button className="shadow" onClick={users}>Brukere</button>
-                <button className="shadow" onClick={inventory}>Utstyr</button>
                 <button className="shadow" onClick={classIndex}>Klasser</button>
+                <button className="shadow" onClick={inventory}>Utstyr</button>
             </div>
             <button className="shadow" onClick={avslutt} id="red-gradient">Gå ut</button>
 
