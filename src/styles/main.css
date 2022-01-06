@@ -220,8 +220,8 @@ select::before {
   z-index: 1;
   background: inherit;
   overflow: hidden;
-  height: 60%;
-  width: 60%;
+  min-height: 60%;
+  min-width: 60%;
   padding: 50px;
   display: -webkit-box;
   display: -ms-flexbox;

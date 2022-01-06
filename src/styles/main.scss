@@ -141,8 +141,8 @@ select{
 
 .card{
     @include blur();
-    height: 60%;
-    width: 60%;
+    min-height: 60%;
+    min-width: 60%;
     padding: 50px;
     display: flex;
     justify-content: center;
