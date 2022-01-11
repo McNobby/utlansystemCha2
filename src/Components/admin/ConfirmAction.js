@@ -24,11 +24,11 @@ const ConfirmAction = ({confirmWord, description, shown, setShown, setConfrimed}
         <div className={shown}>
             <h1>Er du sikker?</h1>
             <h2>{description}</h2>
-            <h2>Skriv inn {confirmWord} for å bekrefte</h2>
+            <h2>Skriv inn "{confirmWord}" for å bekrefte</h2>
             <input id="input" onKeyUp={keyUp} type="text" placeholder={confirmWord} />
             <div className="btn-group">
-                <button onClick={close} id="red-gradient">Lukk</button>
-                <button onClick={slett} id="red-gradient">Slett</button>
+                <button onClick={close}>Lukk</button>
+                <button onClick={slett} id="red-btn">Slett</button>
             </div>
 
 

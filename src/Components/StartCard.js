@@ -4,7 +4,7 @@ export default function StartCard() {
 
     const login = useLogin()
     const updateLogin = useUpdateLogin()
-
+    const teacher = JSON.parse(login.teacher)
     const handleClick = () => {
            window.location.href = "/login" 
     }
@@ -24,7 +24,7 @@ export default function StartCard() {
     return(
 
         <div className="card">
-                <h1>Hei {login.teacher}!</h1>
+                <h1>Hei {teacher.name}!</h1>
             <div id="main-menu">
                 <button onClick={handleClick} className="shadow"><h4>Utlån</h4></button>
                 <button onClick={innlevering} className="shadow"><h4>Innlevering</h4></button>

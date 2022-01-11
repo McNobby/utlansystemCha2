@@ -48,10 +48,18 @@ const UserList = () => {
                     return;
                 }
                 const foundClass = classes.find(c => c._id === e.class._id)
+                if(!foundClass){
+                    usersWithClasses = [...usersWithClasses, {...e, class: {
+                        shortName: "Ugyldig klasse!",
+                        _id: e.class._id
+                    }}]
+                    return
+                }
                 usersWithClasses = [...usersWithClasses, {...e, class: {
                     shortName: foundClass.shortName,
                     _id: foundClass._id
                 }}]
+
             })
 
             console.log(usersWithClasses);

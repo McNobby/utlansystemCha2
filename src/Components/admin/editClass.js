@@ -1,5 +1,6 @@
 import {React, useState} from 'react'
 import sendToBackend from '../../lib/sendToBackend'
+import ConfirmAction from './ConfirmAction'
 
 const EditClass = (props) => {
     const classInfo = props.props.classInfo
@@ -8,7 +9,8 @@ const EditClass = (props) => {
     const [name, setName] = useState('')
     const [shortName, setShortName] = useState('')
     const [teacher, setTeacher] = useState('')
-
+    const [showConfirm, setShowConfirm] = useState('hidden')
+    const [confirmed, setConfirmed] = useState(false)
 
 
     const stateSave = (e) => {
@@ -92,6 +94,23 @@ const EditClass = (props) => {
         )
     })
 
+    const slett = () => {
+        setShowConfirm('confirmAction')
+    }
+    //delete class
+    if(confirmed === true){
+        sendToBackend('rmClass',{
+            _id: classInfo._id,
+        })
+        setConfirmed(false)
+        setShowConfirm('hidden')
+        setChosenClass({
+            className: "hidden",
+            classInfo: {teacher: ""}
+           })
+        refresh()
+    }
+
     const close = () => {
         //just resets chosenclass state to hidden to hide the element
         //classInfo: {teacher: ""} is because react expects it and crashes witout it
@@ -119,9 +138,13 @@ const EditClass = (props) => {
                 </select>
             </div>
             <div className="btn-group">
-                <button onClick={saveToDB} id="red-gradient">Lagre</button>
+                <button onClick={slett} id="red-btn">Slett</button>
                 <button onClick={close} id="red-gradient">Lukk</button>
+                <button onClick={saveToDB} id="green-btn">Lagre</button>
             </div>
+            <ConfirmAction confirmWord={classInfo.name}
+            shown={showConfirm} setShown={setShowConfirm} setConfrimed={setConfirmed}
+            description={`Er du sikker du vil slette klassen ${classInfo.shortName}?`}/>
         </div>
     )
 }

@@ -187,6 +187,18 @@ module.exports = async (object, res) =>{
             mongoose.connection.close
            }
     }
+    if(object.type === 'rmClass'){
+        try{
+            //connects to database
+            await mongo().then(async mongoose =>{
+                await klasseSchema.deleteOne({
+                    _id: object._id
+                })
+            })
+           }finally{
+            mongoose.connection.close
+           }
+    }
     
 }
 

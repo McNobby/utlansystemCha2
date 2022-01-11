@@ -30,7 +30,7 @@ const TeacherLogin = () => {
             console.log(res, user);
             if(user.teacher){
 
-                updateLogin({teacher: user.navn})
+                updateLogin({teacher: JSON.stringify({name: user.navn, _id: user._id})})
                 window.location.href = "/"
                 return
             }
