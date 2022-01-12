@@ -78,9 +78,9 @@ const LoginForm = () => {
             <input type="password"autoFocus onKeyUp={handleClick} />
 
             <div className="btn-group">
-            <button onClick={handleSubmit}><h4>Logg inn</h4></button>
-            <button onClick={regButtonClick} ><h4>Registrer</h4></button>
-            <button onClick={back}><h4>Tilbake</h4></button>
+            <button onClick={handleSubmit}>Logg inn</button>
+            <button onClick={regButtonClick} >Registrer</button>
+            <button onClick={back}>Tilbake</button>
             </div>
             
         </>

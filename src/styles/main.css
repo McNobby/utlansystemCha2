@@ -89,6 +89,7 @@ button {
   transition: 0.3s all;
   height: 40px;
   width: 60px;
+  font-weight: 600;
 }
 
 button::before {

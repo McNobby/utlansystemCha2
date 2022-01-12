@@ -32,7 +32,7 @@ const AdminPanel = () => {
                 <button className="shadow" onClick={classIndex}>Klasser</button>
                 <button className="shadow" onClick={inventory}>Utstyr</button>
             </div>
-            <button className="shadow" onClick={avslutt} id="red-gradient">Gå ut</button>
+            <button className="shadow" onClick={avslutt} id="red-gradient">Tilbake</button>
 
         </div>
     )
