@@ -24,6 +24,10 @@
           align-items: center;
 }
 
+a {
+  text-decoration: none;
+}
+
 #blue {
   color: #3DC4FF;
   font-weight: 500;
@@ -375,6 +379,10 @@ select::before {
   width: 100%;
   height: 70%;
   padding: 20px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(350px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
 }
 
 .list #red {
@@ -397,41 +405,13 @@ select::before {
           align-items: center;
   -ms-grid-columns: (minmax(200px, 1fr))[auto-fit];
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  height: 50px;
+  height: 100px;
   -webkit-box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.137);
           box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.137);
   margin: 10px;
   -webkit-transition: 0.2s;
   transition: 0.2s;
   border-radius: 5px;
-}
-
-.listItem:nth-child(2n) {
-  -webkit-box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
-          box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
-  border-radius: 21px;
-  position: relative;
-  z-index: 1;
-  background: inherit;
-  overflow: hidden;
-  border-radius: 5px;
-}
-
-.listItem:nth-child(2n)::before {
-  content: "";
-  position: absolute;
-  background: inherit;
-  background-size: cover;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  -webkit-box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.589);
-          box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.589);
-  -webkit-filter: blur(10px);
-          filter: blur(10px);
-  margin: -20px;
 }
 
 .listItem .moreInfo {
@@ -530,12 +510,12 @@ select::before {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  font-weight: 100;
   margin-bottom: 20px;
 }
 
 .btn-group button {
-  margin: 20px;
-  font-weight: 400;
+  margin: 10px;
 }
 
 .hidden {

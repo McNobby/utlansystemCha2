@@ -67,6 +67,9 @@ const LoginForm = () => {
     const regButtonClick = () =>{
         window.location.href="/registrer"
     }
+    const back = () => {
+        window.history.back()
+    }
 
     return(
         
@@ -74,10 +77,10 @@ const LoginForm = () => {
             <h2>Logg inn elev</h2>
             <input type="password"autoFocus onKeyUp={handleClick} />
 
-            <div className="wrap-row">
+            <div className="btn-group">
             <button onClick={handleSubmit}><h4>Logg inn</h4></button>
             <button onClick={regButtonClick} ><h4>Registrer</h4></button>
-            
+            <button onClick={back}><h4>Tilbake</h4></button>
             </div>
             
         </>

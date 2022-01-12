@@ -79,8 +79,8 @@ const UserList = () => {
         return(
             <div className="listItem" onClick={click} key={i._id}>
                 <p>{i.navn}</p>
-                <p>{i.epost}</p>
-                <p>{i.utlant.length}</p>
+               
+                <p>Utlante: {i.utlant.length}</p>
                 <p>{i.class.shortName}</p> 
             </div>
         )

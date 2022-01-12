@@ -71,7 +71,7 @@ const UsrReg = () => {
         <div className="narrow-card">
             <h1>Registrering</h1>
             <input onKeyUp={elevIDSave} type="text" placeholder="elevID (ikke feide inlogging)" />
-            <input onKeyUp={navnSave} type="text" placeholder="Fornavn" />
+            <input onKeyUp={navnSave} type="text" placeholder="Fullt Navn" />
             <input onKeyUp={emailSave} type="text" placeholder="E-post" />
             <SelectClass keyUp={classSave} classes={classes}/>
             <div className="btn-group">
