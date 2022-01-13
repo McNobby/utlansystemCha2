@@ -73,7 +73,7 @@ const TeacherList = () => {
                 <p>Epost</p>
                 <p>Antall utlånte</p>
                 </div>
-            <div className="list">
+            <div className="list" id='gridList'>
                 {list}
             </div>
             <EditUser 

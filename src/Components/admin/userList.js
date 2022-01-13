@@ -114,7 +114,7 @@ const UserList = () => {
                 <p>Antall utlånte</p>
                 <p>Klasse</p>
                 </div>
-            <div className="list">
+            <div className="list" id='gridList'>
                 {list}
             </div>
             <EditUser name={name} email={mail} shown={shown} _id={id} classes={classes} user={user} refresh={getAllItems} setShown={setShown}/>
